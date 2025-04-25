@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | QR code component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+ 
+ <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+  <div class="declare">
+  <p>Improve your front-end skills by building projects
+
+  Scan the QR code to visit Frontend Mentor and take your coding skills to the next level</p>
+</div>
+  <div class="container">
+
+<p> Enter your text or URL </p>
+<input type="text" placeholder="Text or URL" id="qrText">
+
+<div id="imgBox">
+  <img src=""  id="qrImage">
+</div>
+<button onclick="generateQr()">Generate QR Code</button>
+
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Sachit Kumar</a>.
+  </div>
+
+
+  <script>
+
+    let imgBox=document.getElementById("imgBox");
+    let qrImage=document.getElementById("qrImage");
+    let qrText=document.getElementById("qrText");
+    function generateQr () {
+
+      if(qrText.value.length >0){
+      qrImage.src=" https://api.qrserver.com/v1/create-qr-code/?size=150x150&data= "+qrText.value;
+      imgBox.classList.add("show-img");
+    }
+    else{
+        qrText.classList.add('error');
+        qrText.value="Enter Text or URL";
+        setTimeout(()=>{
+          qrText.classList.remove('error');
+          qrText.value="";
+        },1000);
+    }
+  }
+  </script>
+</body>
+</html>
